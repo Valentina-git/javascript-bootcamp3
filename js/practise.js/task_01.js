@@ -15,7 +15,7 @@
 для добавления(конкатенации) строк внутри цикла for */
 
 
-const pets = ['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong'];
+// const pets = ['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong'];
 
 let getItemsString = function (array) {
     
@@ -28,14 +28,14 @@ let getItemsString = function (array) {
     }
     return result; 
 }
-getItemsString(pets)
+console.log(getItemsString(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']));
 
 
+//getItemsString(pets)
 
 //console.log(i+1 + ' - '  + array[i] + ' ' + '\n');
 // let getItemsString = 'Vova';
 // getItemsString = 451;
-//  console.log(getItemsString(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']));
 //  console.log(typeof getItemsString);
 // console.log('Lena' + ' ' + 'Sasha' + ' ' + '=' + ' ' + 'love');
 

@@ -70,3 +70,48 @@
 // {
 //   console.log(users[i]);
 // }
+//--------------------------------------------------------------------------
+
+//Example 03 
+//Функция для вызова console.log, чтобы не прописывать постоянно его!
+
+// let age = 25;
+// const users = ["Poly", "Roma", "Coda"] 
+
+// console.log("users", users);
+// console.log("age", age);
+
+
+// let debug = function (cat, message = "") {
+//  console.log(message, cat);
+// }
+// debug("Массив пользователей", users)
+// debug("Возраст", age)
+// debug(age)
+// ________________________________________________________________________________
+
+//Example 04
+
+// const favorite = "the road will be mastered be the walking";
+
+// //console.log(favorite.length);
+// const findLongestWord = function(string){
+//     const words = string.split(' ');
+//    let longestWord = words[0]
+
+//     let length = words.length;
+//  for (let i = 0; i<length; i+=1){
+//     // console.log(words[i]);
+//      if(longestWord.length < words[i].length){
+//         longestWord = words[i]
+//         }    
+//     }
+//  return longestWord;
+
+//  //console.log(longestWord);
+// //  return;
+// }
+// console.log(findLongestWord(favorite));
+// __________________________________________________
+
+//Example 04
