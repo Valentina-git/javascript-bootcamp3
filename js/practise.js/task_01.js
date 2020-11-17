@@ -17,18 +17,18 @@
 
 // const pets = ['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong'];
 
-let getItemsString = function (array) {
+// let getItemsString = function (array) {
     
-    let length = array.length;
-    let result = '';
+//     let length = array.length;
+//     let result = '';
     
-    for (let i = 0; i < length; i += 1) {
-        result += `${i + 1} - ${array[i]} \n`
-        console.log(`${i+1} - ${array[i]} \n`)
-    }
-    return result; 
-}
-console.log(getItemsString(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']));
+//     for (let i = 0; i < length; i += 1) {
+//         result += `${i + 1} - ${array[i]} \n`
+//         console.log(`${i+1} - ${array[i]} \n`)
+//     }
+//     return result; 
+// }
+// console.log(getItemsString(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']));
 
 
 //getItemsString(pets)

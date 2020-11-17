@@ -24,17 +24,17 @@
 - выводит содержимое объекта user в формате 
 ключ:значение используя Object.keys() и for...of */
 
-const user = {
-  name: 'Mango',
-  age: 20,
-  hobby: 'html',
-  premium: true,
-};
-const info = Object.keys(user);
+// const user = {
+//   name: 'Mango',
+//   age: 20,
+//   hobby: 'html',
+//   premium: true,
+// };
+// const info = Object.keys(user);
 
-for (const key of info) {
-    console.log('key: ', user[key]);
-}
+// for (const key of info) {
+//     console.log('key: ', user[key]);
+// }
 
 // const info = {
 //     ...user,
