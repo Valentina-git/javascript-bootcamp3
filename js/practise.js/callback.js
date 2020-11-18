@@ -121,7 +121,7 @@
 //         return console.log(sumPlus);
 //     },
 //     sum(arr, func) {
-//         return func(arr, 1); // callback
+//         return func(arr, 1); // func - callback
 //         //this.pow(arr, 1);
 //     },
 //     square(arr) {
