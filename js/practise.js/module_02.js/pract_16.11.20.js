@@ -11,7 +11,3 @@ const findElement = (arr, elementToFind) => {
     return false;
 }
 console.log(findElement(arr, 'rom')); */
-
-//___________________________________________________________________
-
-//Task 2

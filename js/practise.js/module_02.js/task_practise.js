@@ -114,4 +114,4 @@
 // console.log(findLongestWord(favorite));
 // __________________________________________________
 
-//Example 04
+

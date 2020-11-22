@@ -1,5 +1,6 @@
 /**
  * Задача 4-1
+ * 
 Callback функция
 
 Функция mapArray(array, cb), 
@@ -57,6 +58,7 @@ console.log(mapArray(arr, subIndex));
 
 /**
  * Задача 4-2
+ * 
 Callback функция и метод push
 Функция isUniq принимает три параметра - 
 element, index и arr.Функция возвращает 
@@ -75,3 +77,192 @@ true или false в зависимости от того
 заполняла новый пустой массив numbers только теми элементами 
 из массива array, для которых вызов функции cb вернет true.
  */
+
+/**
+ *const isUniq = (element, index, arr) => arr.indexOf(element) === index;
+const isEven = (element) => element % 2 === 0;
+
+function filterArray(array, cb) {
+  'use strict';
+  const numbers = [];
+  for(let i = 0; i < array.length; i += 1) {
+    const element = array[i];
+    const index = i;
+    
+    // !!!Var1
+     if (cb === isUniq && cb(element, index, array)) {
+       numbers.push(array[i]);
+    } if (cb === isEven && cb(element)) {
+      numbers.push(array[i]);
+    }
+
+    // !!!Var2
+    //if (cb(element,index,array)){numbers.push(array[i])}
+  }
+  return numbers;
+}
+const arr  = [1,2,3,4,5,1,2,5];
+console.log(filterArray(arr, isUniq));
+// [1, 2, 3, 4, 5]
+console.log(filterArray(arr, isEven));
+// [2, 4, 2]
+
+ * 
+ */
+//___________________________________________________
+
+/**
+ * Задача 4-3
+ * 
+Callback функция 
+
+для получения одного вычисляемого значения массива
+Функции add, sub и mult принимают два параметра - 
+accum и element, возвращает число - 
+сумму, разность или произведение параметров.
+
+Дополни тело функции reduceArray 
+строкой присвоения accum вызова функции cb. 
+
+Функция reduceArray должна будет подсчитать 
+сумму или разность или произведение всех элементов массива 
+в зависимости от того какая именно из трех функция 
+(add,mult,sub) будет передана в качестве cb.
+ */
+ 
+/**
+ * const add = (accum, element) => accum + element;
+const mult = (accum, element) => accum * element;
+const sub = (accum, element) => accum - element;
+
+function reduceArray(array, cb, initial) {
+  'use strict';
+  let i;
+  let accum;
+  if(arguments.length >= 3) {
+    accum = initial;
+    i = 0;
+  }
+  if(arguments.length === 2) {
+    accum = array[0];
+    i = 1;
+  }
+  for(i; i < array.length; i += 1) {
+    const element = array[i];
+    accum=cb(accum, element)
+  }
+  return accum;
+}
+
+const arr  = [1,2,3,4,5];
+
+console.log(reduceArray(arr, add)); // 15
+console.log(reduceArray(arr, add, 10)); // 25
+
+console.log(reduceArray(arr, mult)); // 120
+console.log(reduceArray(arr, mult, 10)); // 1200
+
+console.log(reduceArray(arr, sub)); // -13
+console.log(reduceArray(arr, sub, 10)); // -5
+ */
+
+/**
+ * Задача 4-4
+this в методах объекта
+Расставь отсутствующие this 
+в методах объекта account.
+
+В комментариях показаны операции 
+с объектом и ожидаемые результаты.
+ */
+
+/**
+ * const account = {
+  owner: 'Mango',
+  balance: 24000,
+  discount: 0.1,
+  orders: ['order-1', 'order-2', 'order-3'],
+  changeDiscount(value) {
+    this.discount = value; // Write code in this line
+  },
+  showOrders() {
+    return this.orders; // Write code in this line
+  },
+  addOrder(cost, order) {
+    this.balance -= cost; // Write code in this line
+    this.orders.push(order); // Write code in this line
+  },
+};
+const copyAccount =  Object.assign({},account);
+copyAccount.orders = [...account.orders];
+// копируем для автотестов ссылочные типы
+
+/*
+account.changeDiscount(0.15);
+//console.log(account.discount); // 0.15
+
+//console.log(account.showOrders()); 
+// ['order-1', 'order-2', 'order-3']
+
+account.addOrder(5000, 'order-4');
+//console.log(account.balance); // 19000
+
+//console.log(account.showOrders());
+// ['order-1', 'order-2', 'order-3', 'order-4']
+*/
+
+/**
+ * Задача 4-5
+bind для замены this в методах объекта
+Оформи вызов метода invokeInventoryAction таким образом, чтобы в качестве this для методов
+
+inventory.add
+inventory.remove выступал объект inventory
+ */
+
+ /**
+  * const inventory = {
+  items: ['Knife', 'Gas mask'],
+  add(itemName) {
+    this.items.push(itemName);
+    return `Adding ${itemName} to inventory`;
+  },
+  remove(itemName) {
+    this.items = this.items.filter(item => item !== itemName);
+    return `Removing ${itemName} from inventory`;
+  },
+};
+
+const invokeInventoryAction = function(itemName, action) {
+  const act =  action(itemName);
+  const msg =  `Invoking action on ${itemName}`;
+  return {act, msg};
+};
+
+const invokeAdd = invokeInventoryAction(
+  'Medkit',
+  inventory.add.bind(inventory)  // Write code in this line
+);
+const arrayAdd = [...inventory.items];
+/* 
+//console.log(invokeAdd);
+//{ act: 'Adding Medkit to inventory', msg: 'Invoking action on Medkit' }
+
+//console.log(arrayAdd);
+// ['Knife', 'Gas mask', 'Medkit']
+*/
+
+// const invokeRemove = invokeInventoryAction(
+//   'Gas mask',
+//   inventory.remove.bind(inventory)  // Write code in this line
+// );
+
+// const arrayRemove = [...inventory.items];
+
+/* 
+//console.log(invokeRemove);
+//{ act: 'Removing Gas mask from inventory', msg: 'Invoking action on Gas mask' }
+
+//console.log(arrayRemove);
+// ['Knife', 'Medkit']
+*/

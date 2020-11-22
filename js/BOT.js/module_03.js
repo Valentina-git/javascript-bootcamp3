@@ -1,276 +1,285 @@
-/**
- * Задача 3-1
-CRUD для свойств объекта
-С - create (создать)
-R - read (читать)
-U - update (обновить)
-D - delete (удалить)
+'use strict';
+/**  Критерии приема
+ * 
+- Создан репозиторий goit-js-hw-03
+- При сдаче домашней работы есть ссылка 
+на исходные файлы в репозитории
+- Каждое задание выполнено в отдельном файле 
+с именем task-номер_задания.js. 
+Используй <script type="module"> чтобы 
+закрыть код задания в отдельной области видимости 
+и избежать конфликтов имен идентификаторов.
+Имена переменных и функций понятные, описательные
+Код отформатирован с помощью Prettier*/
+
+//_________________________________________________________________________
+
+/**  Задание 1
+ 
 Напиши скрипт, который, для объекта user, последовательно:
 
-добавляет поле 'mood' со значением 'happy'
-добавляет поле 'full time' со значением true
-заменяет значение 'hobby' на 'skydiving'
-заменяет значение 'premium' на false
-в переменную message записывает содержимое объекта user:
-для переменной keys присваивает массив свойств объекта, 
-используя метод Object.keys()
-с помощью оператора for...of
-в формате ключ:значение
-c переносом строки ('\n')
- */
+- добавляет поле mood со значением 'happy'
+- заменяет значение hobby на 'skydiving'
+- заменяет значение premium на false
+- выводит содержимое объекта user в формате 
+ключ:значение используя Object.keys() и for...of */
 
 /**
- * let message = '';
-const user = {
-  age: 20,
-  hobby: 'html',
-  name: 'Mango',
-  premium: true,
+ * const user = {
+     name: 'Mango',
+     age: 20,
+     hobby: 'html',
+    premium: true,
 };
-
-//Write code under this line
-  user.mood = 'happy';
+user.mood = 'happy';
+user.hobby = 'skydiving';
 user['full time'] = true;
- user.hobby = 'skydiving';
 user.premium = false;
-
 const keys = Object.keys(user);
-// Write code under this line
- for(const oneUser of keys) {
-   message = `age: 20,
-hobby: skydiving,
-name: Mango,
-premium: false,
-mood: happy,
-"full time": true\n`;
- };
 
-console.log(message);
-/*
-'age : 20
-hobby : skydiving
-name : Mango
-premium : false
-mood : happy
-"full time" : true
-' */
-
-//_____________________________________________________________
-/**
- * Задача 3-2
-Подсчет количества свойств в объекте
-Напиши функцию countProps(obj), 
-которая возвращает число - количество свойств в объекте.
-
-Циклы не должны использоваться
+for (const key of keys) {
+    console.log(key, user[key]);
+}
+    console.log(user);
  */
 
- /**
-  * const countProps = function(obj) {
-    'use strict';
-  // Write code under this line
-  const keys = Object.keys(obj);
-  return keys.length;
-};
 
-console.log(countProps({})); // 0
+//____________________________________________________________________
 
-console.log(countProps({a:1, b:1})); // 2
+/**  Задание 2
+Напиши функцию countProps(obj), 
+считающую кол-во свойств в объекте. 
+Функция возвращает число - количество свойств. */
 
-console.log(countProps({a:1, b:1, c:1, d:1, e:1})); // 5
-  */
- //______________________________________________________________
+/**
+ * const countProps = function (obj) {
+    const keys = Object.keys(obj);
+    return keys.length;
+}; 
 
- /**
-  * Задача 3-3
-Поиск наибольшего значения среди свойств объекта
-Напиши функцию findBestEmployee(employees), 
-которая принимает объект сотрудников и возвращает 
-имя самого продуктивного (который выполнил больше всех задач). 
-Сотрудники и кол-во выполненных задач содержатся 
-как свойства объекта в формате "имя":"кол-во задач".
-  */
+ console.log(countProps({})); // 0
+ console.log(countProps({ name: 'Mango', age: 2 })); // 2
+ console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 })); // 3
+
+ */
+//_________________________________________________________
+/**
+ *  Задание 3
+ Напиши функцию findBestEmployee(employees), 
+которая принимает объект сотрудников и возвращает
+имя самого продуктивного(который выполнил больше всех задач).
+Сотрудники и кол - во выполненых задач содержатся как свойства
+объекта в формате "имя": "кол-во задач".
+ */
+
 /**
  * const findBestEmployee = function (employees) {
-  'use strict';
-  // Write code under this line
-  let max = 0;
-  let name = "";
-  for(const entrie in employees) {
-    if(max<employees[entrie]) {
-      max = employees[entrie];
-      name = entrie;
-    }
-  }
-  return name;
-};
+            
+            let max = 0;
+            let name = "";
+            
+            for (const entrie in employees) {
+                //console.log(employees[entrie]);
+                if (max < employees[entrie]) {
+                    max = employees[entrie];
+                    name = entrie;
+                }
+            }
+            return name;
+        }; 
 
-// Объекты и ожидаемый результат
-const developers = {
-  ann: 29,
-  david: 35,
-  helen: 1,
-  lorence: 99,
-}; 
-console.log(findBestEmployee(developers)); 
-// 'lorence'
+        console.log(
+            findBestEmployee({
+                ann: 29,
+                david: 35,
+                helen: 1,
+                lorence: 99,
+            }),
+        ); // lorence
 
-const supports = {
-  poly: 12,
-  mango: 17,
-  ajax: 4,
-}; 
-console.log(findBestEmployee(supports)); 
-// 'mango'
+        console.log(
+            findBestEmployee({
+                poly: 12,
+                mango: 17,
+                ajax: 4,
+            }),
+        ); // mango
 
-const sellers = {
-  lux: 147,
-  david: 21,
-  kiwi: 19,
-  chelsy: 38,
-}
-console.log(findBestEmployee(sellers)); 
-// 'lux'  
+        console.log(
+            findBestEmployee({
+                lux: 147,
+                david: 21,
+                kiwi: 19,
+                chelsy: 38,
+            }),
+        );   // lux 
  */
-//_________________________________________________
+
+//______________________________________________________________________
+/**
+ * Задание 4
+Напиши функцию countTotalSalary(employees) 
+принимающую объект зарплат. Функция считает 
+общую сумму запрплаты работников и возращает ее.
+Каждое поле объекта, передаваемого в функцию, 
+имеет вид "имя": "зарплата".*/
 
 /**
- * Задача 3-4
-Суммирование значений свойств объекта
-Напиши функцию countTotalSalary(employees) 
-принимающую объект зарплат. 
-Функция считает общую сумму зарплаты 
-работников и возвращает ее. Каждое поле объекта, 
-передаваемого в функцию, имеет вид "имя":"зарплата".
- */
+ * const countTotalSalary = function (employees) {
+            // твой код
+            let total = 0;
 
- /**
-  * const countTotalSalary = function(employees) {
-  'use strict';
-  // Write code under this line
-  let total = 0;
-  for(const item in employees) {
-    total += employees[item];
-  };
-  return total;
-};
+            for (const item in employees) {
+                total += employees[item];
+            }                     
+            return total;
+        };
+        
+        console.log(countTotalSalary({})); // 0
 
-// Объекты и ожидаемый результат
-const developers = {
-    mango: 300,
-    poly: 250,
-    alfred: 450,
-};
-console.log(countTotalSalary(developers));
-// 1000
+        console.log(
+            countTotalSalary({
+                mango: 100,
+                poly: 150,
+                alfred: 80,
+            }),
+        ); // 330
 
-const supports = {
-  kiwi: 200,
-  lux: 150,
-  chelsy: 150,
-}
-console.log(countTotalSalary(supports));
-// 500
+        console.log(
+            countTotalSalary({
+                kiwi: 200,
+                lux: 50,
+                chelsy: 150,
+            }),
+        ); // 400 */ 
 
-  */
- //_______________________________________________________
+//___________________________________________________________________
 
- /**
-  * Задача 3-5
-Оператор in и метод push
-
+/**
+ * Задание 5
 Напиши функцию getAllPropValues(arr, prop), 
-которая получает массив объектов и имя свойства.
-Функция возвращает массив значений определенного 
-свойства prop из каждого объекта в массиве.
-Используй метод push для добавления значения 
-массив и оператор in для проверки наличия свойства в объекте.
-  */
+которая получает массив объектов и имя свойства. 
+Возвращает массив значений определенного 
+свойства prop из каждого объекта в массиве.*/
 
-  /**
-   * function getAllPropValues (array, prop) {
-  'use strict';
-  // Write code under this line 
-  const result = [];
-    for (const elem of array) {
+/**
+ * const products = [
+    { name: 'Радар', price: 1300, quantity: 4 },
+    { name: 'Сканер', price: 2700, quantity: 3 },
+    { name: 'Дроид', price: 400, quantity: 7 },
+    { name: 'Захват', price: 1200, quantity: 2 },
+];
+
+const getAllPropValues = function (arr, prop) {
+    const result = [];
+    for (const elem of arr) {
         elem[prop] ? result.push(elem[prop]) : '';
     }
     return result;
-}
+};
+        console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроид', 'Захват']
 
-// Объекты и ожидаемый результат
-const products = [
-    { name: 'Радар', price: 1300, quantity: 4 },
-    { name: 'Радар', price: 1280, quantity: 2 },
-    { name: 'Радар', price: 1320, quantity: 1 },
-    { name: 'Сканер', price: 2700, quantity: 1 },
-    { name: 'Сканер', price: 2500, quantity: 3 },
-    { name: 'Дроид', price: 400, quantity: 7 },
-    { name: 'Захват', price: 1200, quantity: 2 },
-]; 
+        console.log(getAllPropValues(products, 'quantity')); // [4, 3, 7, 2]
 
-console.log(getAllPropValues(products, 'name'));
-// ['Радар', 'Радар', 'Радар', 'Сканер', 'Сканер', 'Дроид', 'Захват']
+        console.log(getAllPropValues(products, 'category')); // []
+*/
 
-console.log(getAllPropValues(products, 'quantity'));
-// [4, 2, 1, 1, 3, 7, 2]
+//____________________________________________________________________
 
-console.log(getAllPropValues(products, 'category'));
-//  []
-
-   */
-  //_________________________________________________________
-
-  /**
-   * Задача 3-6
-Суммирование значений свойства из массива объектов
-Напиши функцию calculateTotalPrice(allProdcuts, productName), которая получает массив объектов и имя продукта (значение свойства name). Возвращает общую стоимость продукта (цена умноженная на количество).
-
+/**
+ * Задание 6
+Напиши функцию calculateTotalPrice(allProdcuts, productName), 
+которая получает массив объектов и имя продукта (значение свойства name). 
+Возвращает общую стоимость продукта (цена * количество).
 Вызовы функции для проверки работоспособности твоей реализации.
 
-// calculateTotalPrice(products, 'Радар'));
-// 9080
+ */
 
-// calculateTotalPrice(products, 'Сканер')); // 10200
-
-// calculateTotalPrice(products, 'Захват')); // 2400
-
-// calculateTotalPrice(products, 'Дроид')); // 2800
-   */
-
-   /**
-    * function calculateTotalPrice (array, prop) {
-  'use strict';
-  
-  let result = 0;
-  for (const product of array) {
-     if (product.name === prop) {
-      result +=  product.price * product.quantity
-      };
-   };
-  return result;
-}
-
-// Объекты и ожидаемый результат
-const products = [
+/**
+ * const products = [
     { name: 'Радар', price: 1300, quantity: 4 },
-    { name: 'Радар', price: 1280, quantity: 2 },
-    { name: 'Радар', price: 1320, quantity: 1 },
-    { name: 'Сканер', price: 2700, quantity: 1 },
-    { name: 'Сканер', price: 2500, quantity: 3 },
+    { name: 'Сканер', price: 2700, quantity: 3 },
     { name: 'Дроид', price: 400, quantity: 7 },
-    { name: 'Захват', price: 1200, quantity: 2 }
-]; 
+    { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-console.log(calculateTotalPrice(products, 'Радар')); 
-// 9080
+const calculateTotalPrice = function (allProdcuts, productName) {
 
-console.log(calculateTotalPrice(products, 'Сканер')); 
-// 10200
+    for (const product of allProdcuts) {
+        if (product.name === productName) {
+            return product.price * product.quantity
+        }
+    }
+};
 
-console.log(calculateTotalPrice(products, 'Захват'));
-// 2400
+console.log(calculateTotalPrice(products, 'Радар')); // 5200
+console.log(calculateTotalPrice(products, 'Дроид')); // 2800
+ */
+//_______________________________________________________________________
 
-console.log(calculateTotalPrice(products, 'Дроид')); 
-// 2800
-    */
+// НЕ РЕШЕННАЯ
+
+// Задание 7 - дополнительное, выполнять не обязательно
+// Напиши скрипт управления личным кабинетом интернет банка. Есть объект account в котором необходимо реализовать методы для работы с балансом и историей транзакций.
+
+// /*
+//  * Типов транзацкий всего два.
+//  * Можно положить либо снять деньги со счета.
+//  */
+// const Transaction = {
+//   DEPOSIT: 'deposit',
+//   WITHDRAW: 'withdraw',
+// };
+
+// /*
+//  * Каждая транзакция это объект со свойствами: id, type и amount
+//  */
+
+// const account = {
+//   // Текущий баланс счета
+//   balance: 0,
+
+//   // История транзакций
+//   transactions: [],
+
+//   /*
+//    * Метод создает и возвращает объект транзакции.
+//    * Принимает сумму и тип транзакции.
+//    */
+//   createTransaction(amount, type) {},
+
+//   /*
+//    * Метод отвечающий за добавление суммы к балансу.
+//    * Принимает сумму танзакции.
+//    * Вызывает createTransaction для создания объекта транзакции
+//    * после чего добавляет его в историю транзакций
+//    */
+//   deposit(amount) {},
+
+//   /*
+//    * Метод отвечающий за снятие суммы с баланса.
+//    * Принимает сумму танзакции.
+//    * Вызывает createTransaction для создания объекта транзакции
+//    * после чего добавляет его в историю транзакций.
+//    *
+//    * Если amount больше чем текущий баланс, выводи сообщение
+//    * о том, что снятие такой суммы не возможно, недостаточно средств.
+//    */
+//   withdraw(amount) {},
+
+//   /*
+//    * Метод возвращает текущий баланс
+//    */
+//   getBalance() {},
+
+//   /*
+//    * Метод ищет и возвращает объект транзации по id
+//    */
+//   getTransactionDetails(id) {},
+
+//   /*
+//    * Метод возвращает количество средств
+//    * определенного типа транзакции из всей истории транзакций
+//    */
+//   getTransactionTotal(type) {},
+// };
