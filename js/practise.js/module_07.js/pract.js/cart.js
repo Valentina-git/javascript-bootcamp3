@@ -1,22 +1,22 @@
-const cart = [
-    { id: 1, title: 'Samsung', qty: 2 },
-    { id: 2, title: 'Sony', qty: 7 },
-    { id: 3, title: 'Nokia', qty: 6 },
-    { id: 4, title: 'Iphone', qty: 7 },
-    { id: 5, title: 'Motorolla', qty: 5 },
-];
+// const cart = [
+//     { id: 1, title: 'Samsung', qty: 2 },
+//     { id: 2, title: 'Sony', qty: 7 },
+//     { id: 3, title: 'Nokia', qty: 6 },
+//     { id: 4, title: 'Iphone', qty: 7 },
+//     { id: 5, title: 'Motorolla', qty: 5 },
+// ];
 
-let ul = document.createElement('ul');
-let div = document.getElementById('root')
-let html = '';
+// let ul = document.createElement('ul');
+// let div = document.getElementById('root')
+// let html = '';
 
-cart.forEach((item) => {
-   let {id, title, qty} = item
-    html += `<li> id: ${id}, title: ${title}, qty: ${qty} </li>`
-})
+// cart.forEach((item) => {
+//    let {id, title, qty} = item
+//     html += `<li> id: ${id}, title: ${title}, qty: ${qty} </li>`
+// })
 
-ul.innerHTML = html;
-div.append(ul)
+// ul.innerHTML = html;
+// div.append(ul)
 
 
 //______________________________________________

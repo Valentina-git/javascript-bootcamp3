@@ -1,4 +1,71 @@
 /**
+ * Задание 1
+В HTML есть список категорий ul#categories.
+
+<ul id="categories">
+  <li class="item">
+    <h2>Животные</h2>
+
+    <ul>
+      <li>Кот</li>
+      <li>Хомяк</li>
+      <li>Лошадь</li>
+      <li>Попугай</li>
+    </ul>
+  </li>
+  <li class="item">
+    <h2>Продукты</h2>
+
+    <ul>
+      <li>Хлеб</li>
+      <li>Петрушка</li>
+      <li>Творог</li>
+    </ul>
+  </li>
+  <li class="item">
+    <h2>Технологии</h2>
+
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Node</li>
+    </ul>
+  </li>
+</ul>
+
+Напиши скрипт, который выполнит следующие операции.
+
+Посчитает и выведет в консоль количество категорий в ul#categories, 
+то есть элементов li.item. Получится 'В списке 3 категории.'.
+
+Для каждого элемента li.item в списке ul#categories, 
+найдет и выведет в консоль текст заголовка элемента (тега h2) 
+и количество элементов в категории (всех вложенных в него элементов li).
+
+Например для первой категории получится:
+
+Категория: Животные
+Количество элементов: 4
+ */
+
+// let ul = document.getElementById("categories");
+// let items = ul.querySelectorAll(".item")
+
+// items.forEach((listItem) => {
+//   let h2 = listItem.querySelector('h2');
+//   let li = listItem.querySelectorAll('li');
+
+//   console.log(`Категория: ${h2.textContent}, Количество элементов: ${li.length}`);
+  //console.log(`Категория: ${h2.innerText}`);
+//})
+
+// console.log(items); //NodeList(3) [li.item, li.item, li.item]
+// console.log(`в списке ${items.length} категории`);
+
+//____________________________________________
+/**
  *Задание 2
 В HTML есть пустой список ul#ingredients.
 <ul id="ingredients"></ul>
@@ -258,20 +325,44 @@ input#name-input (событие input), подставляет его
   border-color: #f44336;
 } */
 
-let inputRef = document.getElementById("validation-input")
+//let inputRef = document.getElementById("validation-input")
 
 // console.log(inputRef.dataset);
 // console.log(inputRef.dataset.length);
 
-inputRef.addEventListener("blur", (event) => {
-  const inputLength = event.target.value
-  if (inputRef.dataset.length == inputLength.length) {
-    inputRef.classList.add('valid')
-    inputRef.classList.remove('invalid')
-  } else {
-    inputRef.classList.add('invalid')
-    inputRef.classList.remove('valid')
-  }
+// inputRef.addEventListener("blur", (event) => {
+//   const inputLength = event.target.value
+//   if (inputRef.dataset.length == inputLength.length) {
+//     inputRef.classList.add('valid')
+//     inputRef.classList.remove('invalid')
+//   } else {
+//     inputRef.classList.add('invalid')
+//     inputRef.classList.remove('valid')
+//   }
   // console.log(event.target.value);
   // console.log('blur');
-})
+//})
+//________________________________________________
+/**
+ * Задание 7
+Напиши скрипт, который реагирует на изменение 
+значения input#font-size-control (событие input) 
+и изменяет инлайн-стиль span#text обновляя свойство 
+font-size. В результате при перетаскивании ползунка 
+будет меняться размер текста.
+
+<input id="font-size-control" type="range" />
+<br />
+<span id="text">Абракадабра!</span>
+ */
+
+// let refs = {
+//     input: document.querySelector('#font-size-control'),
+//     span: document.querySelector('#text'),
+// }
+
+// function changeFont() {
+//     refs.span.style.fontSize = `${refs.input.value}px`
+// }
+
+// refs.input.addEventListener('input', changeFont);
