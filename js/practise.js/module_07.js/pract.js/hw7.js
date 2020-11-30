@@ -128,14 +128,31 @@
 // const ulRef = document.querySelector("#gallery");
 // console.log(ulRef);
 // images.forEach((image) => {
-//   markUp += `<li><img src=${image.url} alt=${image.alt}/></li>`;
+//   markUp += `<li><img src=${image.url} 
+//    alt = ${ image.alt } width = 300 /></li >`;
 // });
 // ulRef.insertAdjacentHTML("afterbegin", markUp);
 //========================================\\
+//==============================forEach
+//   let getUl=document.querySelector('#gallery');
+
+//   const createLi=function(item){
+//     getUl.insertAdjacentHTML('afterbegin', '<li><img></li>');
+//     let getLi=document.querySelector('#gallery li')
+//     let getImg=document.querySelector('#gallery img');
+//     getImg.setAttribute('src', item.url);
+//     getImg.setAttribute('alt', item.alt);
+//     getUl.setAttribute('class', 'list');
+//     getLi.setAttribute('class', 'list__item');
+//     getImg.setAttribute('class', 'list__item--img');
+//   };
+//   images.forEach(createLi)
+//     console.log(getUl);
 //=================map (+-)============\\
 
 // const createImg = (images) =>
-//   `<li><img src="${images.url}" alt="${images.alt}"></li>`;
+//   `<li><img src="${images.url}" 
+//    alt = "${images.alt}"width = 300 /></li >`;
 // const itemImg = images.map(createImg).join("");
 // const galleryRef = document.querySelector("#gallery");
 // galleryRef.insertAdjacentHTML("afterbegin", itemImg);
