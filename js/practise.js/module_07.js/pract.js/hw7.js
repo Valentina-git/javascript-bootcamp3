@@ -1,3 +1,13 @@
+
+//Написать ф-цию которая вывоит в консоль 
+//случайное число от 1 до 9. !!!!*****Разминка
+
+// const randomStudent = function () {
+//   console.log(Math.random()*(10-1)+1);
+// }
+// randomStudent()
+//________________________________________
+
 /**
  * Задание 1
 В HTML есть список категорий ul#categories.
@@ -53,16 +63,29 @@
 // let ul = document.getElementById("categories");
 // let items = ul.querySelectorAll(".item")
 
+// console.dir(`В списке ${ul.children.length} категории` );
+
 // items.forEach((listItem) => {
 //   let h2 = listItem.querySelector('h2');
 //   let li = listItem.querySelectorAll('li');
 
 //   console.log(`Категория: ${h2.textContent}, Количество элементов: ${li.length}`);
-  //console.log(`Категория: ${h2.innerText}`);
-//})
+//   //console.log(`Категория: ${h2.innerText}`);
+// })
 
-// console.log(items); //NodeList(3) [li.item, li.item, li.item]
-// console.log(`в списке ${items.length} категории`);
+// //console.log(items); //NodeList(3) [li.item, li.item, li.item]
+// //console.log(`в списке ${items.length} категории`);
+//______________________________________
+
+/**
+ * let itemLi = document.querySelectorAll('.item')
+console.log(`В списке ${itemLi.length} категории.`);
+itemLi.forEach((item) => {
+    let h2 = item.querySelector('h2');
+    let li = item.querySelectorAll('li');
+    console.log(`Категория: ${h2.textContent}\nКоличество элементов: ${li.length}`);
+  })
+ */
 
 //____________________________________________
 /**
@@ -121,19 +144,16 @@
 // ingredients.forEach(createLi);
 // console.log(itemUl);
 ///======================= END FOR EACH=====
-//_________________________________________________
+
 // let ul = document.getElementById("ingredients");
-// const list = document.createElement('ul');
-// console.log(list);
-// let html = '';
+// let html = [];
 
 // ingredients.forEach((item) => {
-//   html += `<li>${item}</li>`
-//   return html
+//   const li = document.createElement('li');
+//   li.textContent = item;
+//   html.push(li)
 // })
-
-// list.innerHTML = html;
-// ul.append(list)
+// ul.append(...html)
 
 //____________________________________________________
 
@@ -288,7 +308,12 @@ input#name-input (событие input), подставляет его
 
 // inputName.addEventListener('input', (event) => {
 //   //event.target.value === '' ? (outputName.textContent = 'Инкогнито') : (outputName.textContent = event.target.value)
-//   outputName.textContent = event.target.value
+//   
+      //event.target.value
+     // ? outputName.textContent = event.target.value
+     // : outputName.textContent = 'Инкогнито'
+
+//outputName.textContent = event.target.value
 //   if (event.target.value === '') {
 //     outputName.textContent = 'Инкогнито'
 //   }
@@ -366,3 +391,131 @@ font-size. В результате при перетаскивании полз�
 // }
 
 // refs.input.addEventListener('input', changeFont);
+//______________________
+// const inputSize = document.querySelector('#font-size-control');
+// const textSize = document.querySelector('#text');
+
+// inputSize.addEventListener('input', onInput);
+// function onInput() {
+//     const size = inputSize.value;
+//     textSize.style.fontSize = size + 'px';
+// }
+//__________________________________________
+
+
+/**
+ * Задание 8 - дополнительное, выполнять не обязательно
+ * 
+Напиши скрипт создания и очистки коллекции элементов. 
+Пользователь вводит количество элементов в input и 
+нажимает кнопку Создать, после чего рендерится коллекция. 
+При нажатии на кнопку Очистить, коллекция элементов очищается.
+
+Создай функцию createBoxes(amount), которая принимает 1 параметр amount - число. 
+Функция создает столько div, сколько указано в amount и добавляет их в div#boxes.
+
+Каждый созданный div:
+
+Имеет случайный rgb цвет фона
+Размеры самого первого div - 30px на 30px
+Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
+Создай функцию destroyBoxes(), которая очищает div#boxes.
+
+<div id="controls">
+  <input type="number" min="0" max="100" step="1" />
+  <button type="button" data-action="render">Создать</button>
+  <button type="button" data-action="destroy">Очистить</button>
+</div>
+
+<div id="boxes"></div>
+ */
+
+/**
+ * let boxRefs = {
+    div: document.getElementById('boxes'),
+    input: document.querySelector('input[type="number"]'),
+    renderButton: document.querySelector('button[data-action="render"]'),
+    destroyButton: document.querySelector('button[data-action="destroy"]'),
+};
+
+let count;
+
+boxRefs.input.addEventListener('change', (event) => {
+    count = event.target.value;
+    console.log('addEventListener change, ', count)
+});
+
+console.log('count global', count)
+
+boxRefs.renderButton.addEventListener('click', () => {
+    console.log('addEventListener click', count);
+    createBoxes(count);
+});
+
+boxRefs.destroyButton.addEventListener('click', () => {
+    destroyBoxes();
+});
+
+function createBoxes(amount) {
+    console.log('createBoxes amount', amount);
+    let size = 30;
+    let colorBox = document.createElement('div');
+    colorBox.style.width = size + 'px';
+    colorBox.style.height = size + 'px';
+
+    for (let i = 1; i <= amount; i += 1) {
+        size += 10;
+        let colorBox = document.createElement('div');
+        colorBox.style.width = size + 'px';
+        colorBox.style.height = size + 'px';
+        let color = createRgb();
+        colorBox.style.backgroundColor = color;
+        boxRefs.div.append(colorBox);
+    }
+}
+
+function createRgb() {
+    let red = Math.round(Math.random() * 255);
+    let green = Math.round(Math.random() * 255);
+    let blue = Math.round(Math.random() * 255);
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+function destroyBoxes() {
+    boxRefs.div.innerHTML = '';
+    boxRefs.input.value = '';
+}
+ */
+
+//________________________________________________
+
+/**
+ * 'use strict';
+const controlsRef = document.querySelector('#controls');
+const inputRef = controlsRef.querySelector('input');
+const btnRender = document.querySelector('[data-action="render"]');
+const btnDestroy = document.querySelector('[data-action="destroy"]');
+const boxesRef = document.querySelector('#boxes');
+const randomRGB = () => {
+  const red = Math.round(Math.random() * 255);
+  const green = Math.round(Math.random() * 255);
+  const blue = Math.round(Math.random() * 255);
+  return `rgb(${red}, ${green}, ${blue})`;
+};
+const createBoxes = () => {
+  const boxNumber = Number(inputRef.value);
+  let boxSize = 30;
+  let string = '';
+  for (let i = 0; i < boxNumber; i += 1) {
+    const boxColor = randomRGB();
+    string += `<div style="width: ${boxSize}px;height: ${boxSize}px; background-color: ${boxColor}"></div>`;
+    boxSize += 10;
+  }
+  boxesRef.insertAdjacentHTML('beforeend', string);
+};
+const destroyBoxes = () => {
+  boxesRef.innerHTML = '';
+};
+btnRender.addEventListener('click', createBoxes);
+btnDestroy.addEventListener('click', destroyBoxes);
+ */

@@ -8,12 +8,20 @@
 </head>
 <body>
    
-    <input
+<div id="controls">
+    <input type="number" min="0" max="100" step="1" />
+    <button type="button" data-action="render">Создать</button>
+    <button type="button" data-action="destroy">Очистить</button>
+</div>
+
+<div id="boxes"></div>
+
+    <!-- <input
   type="text"
   id="validation-input"
   data-length="6"
   placeholder="Введи 6 символов"
-/>
+/> -->
 
     <!-- <input type="text" placeholder="Ваше имя?" id="name-input" />
 <h1>Привет, <span id="name-output">незнакомец</span>!</h1> -->
