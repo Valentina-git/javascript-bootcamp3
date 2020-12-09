@@ -7,11 +7,11 @@
 // 9 / 2 = 4.5 => 0.5
 // 9 / 2 = 4.0;   4 * 2 = 8;   9 - 8 = 1;
 
-// function leapYear(year) {
-//     if (year % 4 == 0) {
-//         console.log("Высокосный");
-//     } else {
-//         console.log("Обычный");
-//     }
-// }
-// leapYear(2020);
+function leapYear(year) {
+    if (year % 4 == 0) {
+        console.log("Высокосный");
+    } else {
+        console.log("Обычный");
+    }
+}
+leapYear(2020);

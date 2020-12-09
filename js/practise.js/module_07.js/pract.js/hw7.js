@@ -267,10 +267,10 @@ itemLi.forEach((item) => {
 </div>
  */
 
-// let counterValue = 0;
-// let value = document.getElementById('value')
-// let btnIncrement = document.querySelector('[data-action="increment"]')
-// let btnDecrement = document.querySelector('[data-action="decrement"]')
+let counterValue = 0;
+let value = document.getElementById('value')
+let btnIncrement = document.querySelector('[data-action="increment"]')
+let btnDecrement = document.querySelector('[data-action="decrement"]')
 
 
 // function increment() {
