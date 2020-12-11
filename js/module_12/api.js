@@ -73,6 +73,77 @@ refs.show.addEventListener('click', displayFavorites)
 
 // let uniq = _.uniq([2, 1, 2, 'sara', 'sara', 'vova', 'vova']);
 // console.log(uniq)
+//===============================
+
+// Selectors
+let div = document.querySelector('#root');
+let ul = document.querySelector('.jokes');
+let randomBtn = document.querySelector('.random');
+let addBtn = document.querySelector('.add');
+let showBtn = document.querySelector('.show');
+// Selectors
+
+function fetchJokes() {
+	return fetch('http://api.icndb.com/jokes/random')
+		.then((res) => res.json())
+		.then((data) => data.value.joke);
+}
+
+function addToFavorites(joke) {
+	return localStorage.setItem('fav', JSON.stringify(joke));
+}
+
+function displayRandom(joke) {
+	div.textContent = joke;
+}
+
+function displayFavorites() {
+	if (localStorage.getItem('fav')) {
+		let favorites = JSON.parse(localStorage.getItem('fav'));
+
+		let jokeLi = favorites.map(function (joke) {
+			return createLi(joke);
+		});
+		return ul.append(...jokeLi);
+	}
+}
+
+function createLi(joke) {
+	let li = document.createElement('li');
+	li.textContent = joke;
+	return li;
+}
+
+function uniqArr(arr) {
+	let result = [];
+	for (let arrItem of arr) {
+		if (!result.includes(arrItem)) {
+			result.push(arrItem);
+		}
+	}
+	return result;
+}
+
+// Listeners
+randomBtn.addEventListener('click', function () {
+	let joke = fetchJokes();
+	joke.then((joke) => displayRandom(joke));
+});
+
+let jokesArr = [];
+addBtn.addEventListener('click', function () {
+	let joke = div.textContent;
+
+	if (!localStorage.getItem('fav')) {
+		addToFavorites(joke);
+	}
+
+	jokesArr.push(joke);
+	addToFavorites(uniqArr(jokesArr));
+});
+
+showBtn.addEventListener('click', displayFavorites);
+// Listeners
 
 //====================================================
 

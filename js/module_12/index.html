@@ -1,22 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="st1ylesheet" 
-        href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+		integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+		crossorigin="anonymous"
+	/>
+	<title>Document</title>
 </head>
 <body>
-    <div id="root"></div>
+	<form class="feedback-form js-feedback-form">
+		<div class="row">
+			<div class="five columns">
+				<label for="exampleNameInput">Your Name</label>
+				<input
+				name = "name"
+				class="u-full-width "
+				type="text"
+				placeholder="User name"
+				id="exampleNameInput"
+				/>
 
-    <button class="button" data-generate="generate">Generate joke</button>
-    <button class="button" data-add="add">Add to favorites</button>
-    <button class="button" data-show="show">Show favorites</button>
+			    <label for="exampleMessage">Message</label>
+				<textarea
+					name = "message"
+					class="u-full-width"
+					placeholder="Hi Dave …"
+					id="exampleMessage"
+					cols="30"
+					rows="10"
+				></textarea>
+			</div>
+		</div>
+	<input class="button-primary" type="submit" value="Submit" />
+</form>
 
-    <ul class="jokes"></ul>
-    
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
-    <script src="./api.js" type="module"></script>
-</body>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script src="./form.js" type="module"></script>
+	</body>
 </html>
