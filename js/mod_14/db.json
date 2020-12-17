@@ -1,0 +1,56 @@
+{
+  "drivers": [
+    {
+      "id": 1,
+      "name": "Lewis Hamilton",
+      "points": "347"
+    },
+    {
+      "id": 2,
+      "name": "Valtteri Bottas",
+      "points": "223"
+    },
+    {
+      "id": 3,
+      "name": "Max Verstappen",
+      "points": "214"
+    },
+    {
+      "id": 4,
+      "name": "Sergio Perez",
+      "points": "125"
+    },
+    {
+      "name": "Daniel Ricciardo",
+      "points": 119,
+      "id": 5
+    },
+    {
+      "name": "Carlos Sainz ****bdfddfd******",
+      "points": 105,
+      "id": 29
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "Mercedes",
+      "points": "573"
+    },
+    {
+      "id": 1,
+      "name": "Aston Martin Red Bull Racing",
+      "points": "319"
+    },
+    {
+      "id": 1,
+      "name": "BWT Racing Point F1 Team",
+      "points": "195"
+    },
+    {
+      "id": 1,
+      "name": "Renault DP World F1 Team",
+      "points": "181"
+    }
+  ]
+}
